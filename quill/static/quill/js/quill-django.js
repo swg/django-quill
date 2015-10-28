@@ -1,8 +1,6 @@
 /** @module quill-django */
 'use strict';
 
-require('./image');
-
 var Quill = require('quill');
 var helpers = require('./helpers');
 
@@ -12,10 +10,9 @@ var helpers = require('./helpers');
  * @param {string} id - The ID of the field from the django form.
  * @param {string} editorSelector - The selector used to get the editor HTML.
  * @param {string} toolbarSelector - The selector used to get the toolbar HTML.
- * @param {string} imageModuleOpts - Options for the image module
  * @param {string} [theme=snow] - The theme that should be used.
  */
-function QuillDjango(id, editorSelector, toolbarSelector, imageModuleOpts, theme) {
+function QuillDjango(id, editorSelector, toolbarSelector, theme) {
     if(id === undefined) {
         throw new Error('Missing editor ID.');
     }
@@ -32,7 +29,7 @@ function QuillDjango(id, editorSelector, toolbarSelector, imageModuleOpts, theme
     toolbarSelector = '[data-id="' + id + '"]' + toolbarSelector;
 
     // Remove overflow from parent row
-    var formRow = helpers.findClosestElement(document.querySelector(editorSelector), '.form-row');
+    var formRow = helpers.findClosestElement(document.querySelector(editorSelector), '.formField');
     if(formRow) {
         formRow.style.overflow = 'visible';
     }
@@ -41,8 +38,7 @@ function QuillDjango(id, editorSelector, toolbarSelector, imageModuleOpts, theme
     this.quill = new Quill(editorSelector, {
         modules: {
             'toolbar': {container: toolbarSelector},
-            'link-tooltip': true,
-            'image': imageModuleOpts
+            'link-tooltip': true
         },
         theme: theme || 'snow'
     });
