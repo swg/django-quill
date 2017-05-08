@@ -36,7 +36,8 @@ class QuillEditorWidget(forms.Textarea):
         """Render the Quill WYSIWYG."""
         if value is None:
             value = ''
-        final_attrs = self.build_attrs(attrs, name=name)
+        attrs['name'] = name
+        final_attrs = self.build_attrs(attrs)
         quill_app = apps.get_app_config('quill')
         quill_config = getattr(quill_app, self.config)
 
