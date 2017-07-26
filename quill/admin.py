@@ -14,11 +14,10 @@ class QuillAdmin(admin.ModelAdmin):
 
     def get_urls(self):
         """Add URLs needed to handle image uploads."""
-        urls = (
-            '',
-            url(r'^upload/$', self.admin_site.admin_view(self.handle_upload), name='quill-file-upload'),
-        )
-        return urls + super(QuillAdmin, self).get_urls()
+        urls = [
+                   url(r'^upload/$', self.admin_site.admin_view(self.handle_upload), name='quill-file-upload'),
+               ] + list(super(QuillAdmin, self).get_urls())
+        return urls
 
     def handle_upload(self, request):
         """Handle file uploads from WYSIWYG."""
