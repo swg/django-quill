@@ -41,9 +41,9 @@ class QuillAdmin(admin.ModelAdmin):
             except KeyError:
                 return HttpResponseBadRequest('Missing image `quillUploadFile`.')
 
-        url = save_file(data, filename, is_raw, default_storage)
-        response_data = {}
-        response_data['url'] = url
+        response_data = {
+            'url': save_file(data, filename, is_raw, default_storage),
+        }
 
         # Response content type needs to be text/html here or else
         # IE will try to download the file.
