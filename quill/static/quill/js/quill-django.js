@@ -40,7 +40,6 @@ function QuillDjango(id, editorSelector, toolbarSelector, theme) {
     this.quill = new Quill(editorSelector, {
         modules: {
             'toolbar': {container: toolbarSelector},
-            'link-tooltip': true
         },
         theme: theme || 'snow'
     });
