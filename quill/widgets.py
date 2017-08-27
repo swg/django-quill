@@ -13,13 +13,13 @@ class QuillEditorWidget(forms.Textarea):
     class Media:
         css = {
             'all': (
-                static('quill/css/vendor/quill-0.19.11.snow.css'),
+                static('quill/css/vendor/quill.core.css'),
+                static('quill/css/vendor/quill.snow.css'),
                 static('quill/css/quill.css'),
             )
         }
 
         js = (
-            static('quill/js/vendor/SimpleAjaxUploader-1a6f62289d.min.js'),
             static('quill/js/build/quill-django.min.js'),
         )
 

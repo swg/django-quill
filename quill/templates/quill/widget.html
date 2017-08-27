@@ -20,12 +20,8 @@
 	var editorSelector = '[data-quill="{{ "editor_selector"|quill_conf }}"]';
 	var toolbarSelector = '[data-quill="{{ "toolbar_selector"|quill_conf }}"]';
 	var id = '{{ id }}';
-    var imageModuleOpts = {
-        handler: '{% url "admin:quill-file-upload" %}',
-        allowedExtensions: JSON.parse('{{ "allowed_image_extensions"|quill_conf_json }}')
-    };
 	var theme = '{{ "theme"|quill_conf }}';
-	var editor = new QuillDjango(id, editorSelector, toolbarSelector, imageModuleOpts, theme);
+	var editor = new QuillDjango(id, editorSelector, toolbarSelector, theme);
     window.DjangoQuillEditors = window.DjangoQuillEditors || {};
     window.DjangoQuillEditors[id] = editor;
 
