@@ -29,12 +29,14 @@ function QuillDjango(id, editorSelector, toolbarSelector, theme) {
     toolbarSelector = '[data-id="' + id + '"]' + toolbarSelector;
 
     // Remove overflow from parent row
-    var formRow = helpers.findClosestElement(document.querySelector(editorSelector), '.formField');
+    var formRow = helpers.findClosestElement(document.querySelector(editorSelector), '.form-row');
+
     if(formRow) {
         formRow.style.overflow = 'visible';
     }
 
     this.id = id;
+
     this.quill = new Quill(editorSelector, {
         modules: {
             'toolbar': {container: toolbarSelector},
