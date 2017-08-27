@@ -103,7 +103,7 @@ $ make test
 ### Building JS
 
 ```bash
-$ make build
+$ make js
 ```
 
 

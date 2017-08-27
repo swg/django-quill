@@ -18,7 +18,10 @@ docs:
 coverage:
 	./node_modules/.bin/browserify -t coverify $(UNIT_TESTS) | ./node_modules/.bin/testling | ./node_modules/.bin/coverify
 
-build:
+css:
+	cp node_modules/quill/dist/*.css quill/static/quill/css/vendor/
+
+js:
 	rm -f quill/static/quill/js/build/quill-django.js
 	rm -f quill/static/quill/js/build/quill-django.min.js
 	./node_modules/.bin/browserify $(JS_FILES) -o quill/static/quill/js/build/quill-django.js
